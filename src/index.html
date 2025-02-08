@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="./output.css" rel="stylesheet">
+    <title>Character Counter</title>
+  </head>
+  <body class="bg-white dark:bg-[#12131a] container mx-auto max-w-7xl px-6">
+    <div class="flex items-center justify-between pb-12 pt-8">
+      <img id="logo" src="./images/logo-light-theme.svg" alt="" />
+      <div
+        id="toggleTheme"
+        class="rounded-md p-3 bg-gray-100 dark:bg-[#21222c]"
+      >
+        <img id="switch" src="./images/icon-moon.svg" alt="" />
+      </div>
+    </div>
+    <h1
+      class="text-4xl md:text-5xl font-custom dark:text-gray-50 max-w-md mx-auto text-center font-bold pb-6"
+    >
+      Analyze your text in real-time.
+    </h1>
+
+    <section class="mb-8">
+      <textarea
+        rows="5"
+        id="textInput"
+        class="rounded-lg border-2 border-[#E4E4EF] dark:border-[#2A2B37] px-4 pt-4 pb-8 w-full dark:bg-[#21222c] bg-gray-100 dark:text-gray-50 outline-none mb-2 placeholder:text-gray-700 placeholder:text-lg dark:placeholder:text-gray-50"
+        placeholder="Start typing your here... (or paste your text)"
+      ></textarea>
+      <div id="warningMessage" class="flex items-center gap-1 mb-2 hidden">
+        <img src="./images/icon-info.svg" alt="" />
+        <p class="text-[#FE8159] font-medium">
+          Limit reached! Your text exceeds characters
+        </p>
+      </div>
+      <div
+        class="flex flex-col dark:text-gray-50 md:flex-row md:items-center md:justify-between"
+      >
+        <div class="flex flex-col md:items-center md:flex-row md:gap-6">
+          <div class="relative flex items-center gap-3">
+            <input
+              id="checkboxSpaces"
+              type="checkbox"
+              checked
+              class="appearance-none bg-inherit border border-gray-600 peer checked:bg-[#D3A0F3] rounded-sm w-4 h-4"
+            />
+            <img
+              src="./images/icon-check.svg"
+              class="absolute top-1.5 left-0.5 hidden peer-checked:block pointer-events-none"
+              alt=""
+            />
+            <label>Exclude Spaces</label>
+          </div>
+
+          <div class="relative flex items-center gap-3">
+            <input
+              checked
+              type="checkbox"
+              id="checkboxLimit"
+              class="appearance-none bg-inherit border peer border-gray-600 checked:bg-[#D3A0F3] rounded-sm w-4 h-4"
+            />
+            <img
+              src="./images/icon-check.svg"
+              class="absolute top-1.5 left-0.5 hidden peer-checked:block pointer-events-none"
+              alt=""
+            />
+            <label>Set Character Limit</label>
+            <input
+              type="number"
+              id="limitInput"
+              class="rounded-md px-2 bg-transparent hidden peer-checked:block outline-none w-12 border dark:border-gray-500"
+            />
+          </div>
+        </div>
+        <p id="readingTime" class="font-custom">
+          Approx. reading time: < 1 Minutes
+        </p>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section
+      class="flex flex-col md:flex-row md:items-center md:justify-evenly gap-5 mb-5"
+    >
+      <div
+        class="rounded-xl bg-[#D3A0F3] w-full px-4 py-6 relative overflow-hidden"
+      >
+        <div>
+          <p id="totalCharacter" class="text-4xl md:text-5xl font-bold pb-2">00</p>
+          <p class="text-xl">Total Character</p>
+        </div>
+        <img
+          src="./images/pattern-character-count.svg"
+          alt=""
+          class="absolute right-[-50px] md:right-[-71px] top-[-10px] lg:right-[-29px]"
+        />
+      </div>
+      <div
+        class="rounded-xl bg-[#FF9F00] w-full px-4 py-6 relative overflow-hidden"
+      >
+        <div>
+          <p id="wordCount" class="text-4xl md:text-5xl font-bold pb-2">00</p>
+          <p class="text-xl">Word Count</p>
+        </div>
+        <img
+          src="./images/pattern-word-count.svg"
+          alt=""
+          class="absolute right-[-50px] md:right-[-71px] lg:right-[-29px] top-[-10px]"
+        />
+      </div>
+      <div
+        class="rounded-xl bg-[#FE8159] w-full px-4 py-6 relative overflow-hidden"
+      >
+        <div>
+          <p id="sentenceCount" class="text-4xl md:text-5xl font-bold pb-2">00</p>
+          <p class="text-xl">Sentence Count</p>
+        </div>
+        <img
+          src="./images/pattern-sentence-count.svg"
+          alt=""
+          class="absolute right-[-50px] md:right-[-71px] lg:right-[-29px] top-[-10px]"
+        />
+      </div>
+    </section>
+    <section>
+      <h2 class="font-custom text-2xl font-semibold dark:text-gray-50 pb-3">
+        Letter Density
+      </h2>
+      <div id="letterDensity"></div>
+    </section>
+    <script src="./script.js"></script>
+  </body>
+</html>
