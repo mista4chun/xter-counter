@@ -51,31 +51,36 @@ seeMoreButton.addEventListener('click', toggleLetterDensity);
 function updateAnalysis() {
   const text = textInput.value;
   const excludeSpacesFlag = checkboxSpaces.checked;
+
   updateLetterDensity(text);
+
   const charLimit = parseInt(limitInput.value) || 0;
 
   // Character Count
   const characterCount = excludeSpacesFlag
     ? text.replace(/\s/g, '').length //Removes all Spaces
     : text.length;
-  totalCharacter.textContent = characterCount;
+  totalCharacter.textContent = characterCount > 0 ? characterCount : "00";
 
   // Word Count
   const words = text
     .trim() //removes leading and trailing spaces.
     .split(/\s+/) //splits the text into an array of words using spaces as the delimiter
     .filter((word) => word.length > 0).length; //removes any empty strings from the array (e.g., caused by multiple spaces).
-  wordCount.textContent = words;
+  wordCount.textContent = words > 0 ? words : "00";
 
   // Sentence Count
   const sentences = text
     .split(/[.!?]+/)
     .filter((sentence) => sentence.length > 0).length;
-  sentenceCount.textContent = sentences;
+  sentenceCount.textContent = sentences > 0 ? sentences : "00";
 
   // Character Limit Warning
   if (charLimit > 0 && characterCount > charLimit) {
     warningMessage.classList.remove('hidden');
+    const warningParagraph = document.querySelector('#warningMessage p');
+    warningParagraph.textContent = ` Limit reached! Your text exceeds ${charLimit} characters`;
+
     textInput.classList.add(
       'border-[#FE8159]',
       'dark:border-[#FE8159]',
@@ -84,6 +89,7 @@ function updateAnalysis() {
     textInput.classList.remove('border-[#E4E4EF]');
   } else {
     warningMessage.classList.add('hidden');
+
     textInput.classList.remove(
       'border-[#FE8159]',
       'dark:border-[#FE8159]',
@@ -98,6 +104,19 @@ function updateAnalysis() {
 }
 
 function updateLetterDensity(text) {
+  letterDensityContainer.innerHTML = '';
+  // Remove non-alphabet characters
+  const cleanedText = text.replace(/[^a-zA-Z]/g, '');
+
+  if (cleanedText.length === 0) {
+    const message = document.createElement('p');
+    message.textContent =
+      'No characters found. Start typing to see letter density';
+    message.className = 'dark:text-gray-50';
+    letterDensityContainer.appendChild(message);
+    return; // ✅ Stop execution if no characters are found
+  }
+
   const letterCounts = {};
   let totalLetters = 0;
 
@@ -119,6 +138,7 @@ function updateLetterDensity(text) {
 }
 
 // Function to Render Letter Density Bars
+
 function renderLetterDensity(sortedLetters, totalLetters) {
   letterDensityContainer.innerHTML = ''; // Clear existing bars
 
@@ -163,6 +183,9 @@ function renderLetterDensity(sortedLetters, totalLetters) {
   seeMoreButton.textContent = showAll ? 'Show less ▲' : 'See more ▼';
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+  updateLetterDensity('');
+});
 
 // Toggle "See More" Function
 function toggleLetterDensity() {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="./output.css" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet" />
     <title>Character Counter</title>
   </head>
   <body class="bg-white dark:bg-[#12131a] container mx-auto max-w-7xl px-6">
@@ -30,11 +30,9 @@
         class="rounded-lg border-2 border-[#E4E4EF] dark:border-[#2A2B37] px-4 pt-4 pb-8 w-full dark:bg-[#21222c] bg-gray-100 dark:text-gray-50 outline-none mb-2 placeholder:text-gray-700 placeholder:text-lg dark:placeholder:text-gray-50"
         placeholder="Start typing your here... (or paste your text)"
       ></textarea>
-      <div id="warningMessage" class="flex items-center gap-1 mb-2 hidden">
+      <div id="warningMessage" class="flex items-center gap-1 hidden">
         <img src="./images/icon-info.svg" alt="" />
-        <p class="text-[#FE8159] font-medium">
-          Limit reached! Your text exceeds characters
-        </p>
+        <p class="text-[#FE8159] font-medium"></p>
       </div>
       <div
         class="flex flex-col dark:text-gray-50 md:flex-row md:items-center md:justify-between"
@@ -69,7 +67,7 @@
             />
             <label>Set Character Limit</label>
             <input
-              type="number"
+              type="text"
               id="limitInput"
               class="rounded-md px-2 bg-transparent hidden peer-checked:block outline-none w-12 border dark:border-gray-500"
             />
@@ -89,7 +87,9 @@
         class="rounded-xl bg-[#D3A0F3] w-full px-4 py-6 relative overflow-hidden"
       >
         <div>
-          <p id="totalCharacter" class="text-4xl md:text-5xl font-bold pb-2">00</p>
+          <p id="totalCharacter" class="text-4xl md:text-5xl font-bold pb-2">
+            00
+          </p>
           <p class="text-xl">Total Character</p>
         </div>
         <img
@@ -115,7 +115,9 @@
         class="rounded-xl bg-[#FE8159] w-full px-4 py-6 relative overflow-hidden"
       >
         <div>
-          <p id="sentenceCount" class="text-4xl md:text-5xl font-bold pb-2">00</p>
+          <p id="sentenceCount" class="text-4xl md:text-5xl font-bold pb-2">
+            00
+          </p>
           <p class="text-xl">Sentence Count</p>
         </div>
         <img
