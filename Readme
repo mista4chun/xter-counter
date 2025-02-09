@@ -1,0 +1,93 @@
+# Frontend Mentor - Character counter solution
+
+This is a solution to the [Character counter challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/character-counter-znSgeWs_i6). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+
+## Table of contents
+
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+ 
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+ 
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
+
+
+
+## Overview
+A simple Character Counter web app that instantly counts characters, words, spaces, and letter density as you type. Built with a clean UI and real-time updates, it helps writers, students, and professionals track text metrics effortlessly. 
+
+### The challenge
+
+Users should be able to:
+
+- Analyze the character, word, and sentence counts for their text
+- Exclude/Include spaces in their character count
+- Set a character limit
+- Receive a warning message if their text exceeds their character limit
+- See the approximate reading time of their text
+- Analyze the letter density of their text
+- Select their color theme
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
+
+
+
+### Links
+
+- Solution URL: [https://github.com/mista4chun/character-counter.git](https://github.com/mista4chun/character-counter.git)
+- Live Site URL: [https://xter-kounta.netlify.app/](https://xter-kounta.netlify.app/)
+
+## My process
+I first mentally broke down the problem. Even jotted down approaches i'd take to achieve a targeted result. Then I started coding, implementing the solutions I already planned in my head.   
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- JavaScript
+- tailwindcss for styles
+
+
+
+
+### What I learned
+
+Handling Letter density proved difficult. Prompting chatGPT provided working solutions
+
+To see how you can add code snippets, see below:
+
+
+```js
+const proudOfThisFunc = () => {
+   // Sorting Letters by Frequency
+  const sortedLetters = Object.entries(letterCounts).sort(
+    (a, b) => b[1] - a[1]
+  ); // converts the object to an array with key value pairs then sort
+}
+```
+
+
+### Useful resources
+
+- [chatGPT resource 1](https://chatgpt.com) - This was helpful particularly with letter density I initially had issues with.
+
+
+## Author
+
+- Website - [Mista4chun](https://porfoliox.netlify.app)
+- Frontend Mentor - [@mista4chun](https://www.frontendmentor.io/profile/mista4chun)
+- Twitter - [@mista4chun](https://www.twitter.com/mista4chun)
+
+
+
+## Acknowledgments
+
+Thank you frontend Mentor I had fun building this, especially using vanilla Js. ou guys rock. 
