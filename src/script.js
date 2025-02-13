@@ -4,6 +4,7 @@ const switcher = document.getElementById('switch');
 const body = document.documentElement;
 const textInput = document.getElementById('textInput');
 const checkboxSpaces = document.getElementById('checkboxSpaces');
+const checkboxLimit = document.getElementById('checkboxLimit');
 const limitInput = document.getElementById('limitInput');
 const warningMessage = document.getElementById('warningMessage');
 const readingTime = document.getElementById('readingTime');
@@ -52,6 +53,7 @@ function updateAnalysis() {
   const text = textInput.value;
   const excludeSpacesFlag = checkboxSpaces.checked;
 
+
   updateLetterDensity(text);
 
   const charLimit = parseInt(limitInput.value) || 0;
@@ -60,20 +62,20 @@ function updateAnalysis() {
   const characterCount = excludeSpacesFlag
     ? text.replace(/\s/g, '').length //Removes all Spaces
     : text.length;
-  totalCharacter.textContent = characterCount > 0 ? characterCount : "00";
+  totalCharacter.textContent = characterCount > 0 ? characterCount : '00';
 
   // Word Count
   const words = text
     .trim() //removes leading and trailing spaces.
     .split(/\s+/) //splits the text into an array of words using spaces as the delimiter
     .filter((word) => word.length > 0).length; //removes any empty strings from the array (e.g., caused by multiple spaces).
-  wordCount.textContent = words > 0 ? words : "00";
+  wordCount.textContent = words > 0 ? words : '00';
 
   // Sentence Count
   const sentences = text
     .split(/[.!?]+/)
     .filter((sentence) => sentence.length > 0).length;
-  sentenceCount.textContent = sentences > 0 ? sentences : "00";
+  sentenceCount.textContent = sentences > 0 ? sentences : '00';
 
   // Character Limit Warning
   if (charLimit > 0 && characterCount > charLimit) {
